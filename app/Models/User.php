@@ -3,13 +3,23 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\{BelongsToMany, HasOne};
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
+
+    public const ADMIN  = 1;
+    public const MEDICO = 2;
+
+    public const RECEPCIONISTA = 3;
+
+    public const PACIENTE = 4;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'active',
     ];
 
     /**
@@ -41,7 +52,41 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
         ];
+    }
+    public function roles(): belongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user_has_roles', 'user_id', 'role_id');
+    }
+    public function paciente(): hasOne
+    {
+        return $this->hasOne(Paciente::class);
+    }
+    public function medico(): hasOne
+    {
+        return $this->hasOne(Medico::class);
+    }
+
+    /**
+     * Verifica se o usuário tem a role especifica.
+     *
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->roles->contains('nome', $role);
+    }
+
+    /**
+     * Verifica se o usuário tem qualquer uma das roles
+     *
+     * @param array $role
+     * @return bool
+     */
+    public function hasAnyRole(array $role): bool
+    {
+        return $this->roles->pluck('nome')->intersect($role)->isNotEmpty();
     }
 }
