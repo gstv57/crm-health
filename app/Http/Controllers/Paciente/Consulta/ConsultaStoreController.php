@@ -11,13 +11,10 @@ use Illuminate\Support\{Carbon, Str};
 
 class ConsultaStoreController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(Paciente $paciente, ConsultaStoreRequest $request)
     {
         $data = $request->validated();
-
+        // TODO - Criar Controller de edição de consultas e cancelamento de consultas.
         try {
             $data['paciente_id']            = $paciente->id;
             $data['usuario_agendamento_id'] = auth()->user()->id;

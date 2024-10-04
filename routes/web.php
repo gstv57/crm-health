@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardControllerAnalise;
+use App\Livewire\Consulta\Medico\ConsultaShowComponent;
 use App\Http\Controllers\Medico\{MedicoCreateController,
     MedicoEditController,
     MedicoIndexController,
@@ -77,6 +78,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/criar', MedicoStoreController::class)->name('medico.store');
         Route::get('/editar/{medico}', MedicoEditController::class)->name('medico.edit');
         Route::patch('/editar/{medico}', MedicoUpdateController::class)->name('medico.update');
+    });
+
+    Route::prefix('medicos/consultas')->group(function () {
+        Route::get('/', \App\Http\Controllers\Consulta\Medico\ConsultaIndexController::class)->name('medicos.consulta.index');
+        Route::get('gerenciar/{consulta}', ConsultaShowComponent::class)->name('medicos.consulta.manage');
     });
 });
 

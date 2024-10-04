@@ -30,7 +30,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">Cadastrar</button>
+                    <button type="submit" class="btn btn-success mt-3">Atualizar</button>
                 </form>
             </div>
         </div>

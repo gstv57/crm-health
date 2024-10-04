@@ -20,7 +20,8 @@
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('plugins/jquery-step/jquery.steps.css') }}" rel="stylesheet" type="text/css"/>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    @livewireStyles
 </head>
 <body>
 <!-- BEGIN LOADER -->
@@ -442,6 +443,7 @@
 <script src="{{ asset('plugins/jquery-step/jquery.steps.min.js') }}"></script>
 <script src="{{ asset('plugins/jquery-step/custom-jquery.steps.js') }}"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -470,6 +472,8 @@
             maxDate: "today",
             yearRange: [1900, new Date().getFullYear()],
         });
+
+
     });
 </script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
@@ -481,5 +485,6 @@
 <script src="{{ asset('assets/js/dashboard/dash_1.js') }}"></script>
 
 <!-- END PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+@livewireScripts
 </body>
 </html>

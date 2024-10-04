@@ -235,16 +235,37 @@
     - agente_de_usuario
     - criado_em
 
-## Relacionamentos principais:
-- Usuário tem muitos Pacientes (médicos)
-- Paciente pertence a muitos Usuários (médicos)
-- Paciente tem muitos Prontuários
-- Usuário tem muitas Consultas
-- Paciente tem muitas Consultas
-- Consulta tem uma ConsultaDetalhada
-- ConsultaDetalhada tem uma Prescrição
-- Prescrição tem muitos ItensPrescrição
-- Paciente tem muitos ExamesLaboratoriais
-- Usuário tem muitas Mensagens (enviadas e recebidas)
-- Paciente tem muitas Faturas
-- Fatura tem muitos ItensFatura e Pagamentos
+
+# Sprint Todo List - Sistema CRM para Clínica de Saúde
+
+## Dia 1
+- [ ] Implementar alteração de status da consulta
+- [ ] Desenvolver funcionalidade para remarcar consultas
+- [ ] Iniciar o sistema de notificação para consultas próximas
+
+## Dia 2
+- [ ] Finalizar sistema de notificação (5 minutos antes da consulta)
+- [ ] Implementar envio de link do Google Meet para telemedicina
+- [ ] Começar a criação do módulo de prontuários
+
+## Dia 3
+- [ ] Finalizar módulo de criação de prontuários para consultas realizadas
+- [ ] Implementar sistema de anexos para prontuários e consultas
+
+## Dia 4
+- [ ] Desenvolver funcionalidade para receitar medicamentos
+- [ ] Iniciar implementação do sistema de checkout de pagamento
+
+## Dia 5
+- [ ] Finalizar sistema de checkout de pagamento
+- [ ] Implementar notificação de remarcação para paciente e médico
+
+## Dia 6
+- [ ] Realizar testes integrados das funcionalidades implementadas
+- [ ] Corrigir eventuais bugs encontrados
+
+## Dia 7
+- [ ] Finalizar correções e ajustes
+- [ ] Preparar documentação das novas funcionalidades
+- [ ] Planejar a próxima sprint
+
