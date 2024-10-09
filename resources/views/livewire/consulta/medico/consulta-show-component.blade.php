@@ -35,7 +35,6 @@
                 <button class="btn btn-primary mb-3" wire:click="toggleMostrarProntuario">
                     <i class="bi {{ $mostrar_prontuario ? 'bi-eye-slash' : 'bi-eye' }} me-1"></i>
                     {{ $mostrar_prontuario ? 'Ocultar Prontuário' : 'Criar Novo Prontuário' }}
-                    "{{ $consulta->status_consulta }}"
                 </button>
            @endif
 
