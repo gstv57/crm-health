@@ -11,7 +11,7 @@ class PacienteFactory extends Factory
 
     public function definition(): array
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['password' => 123]);
 
         $user->roles()->sync(['4']);
 
@@ -20,7 +20,7 @@ class PacienteFactory extends Factory
             'primeiro_nome'   => $this->faker->name(),
             'sobrenome'       => $this->faker->name(),
             'data_nascimento' => $this->faker->dateTimeBetween('-80 years', '-18 years')->format('Y-m-d'),
-            'sexo'            => $this->faker->randomElement(['masculino', 'feminino', 'outro']),
+            'sexo'            => $this->faker->randomElement(['Masculino', 'Feminino', 'Outro']),
             'cpf'             => $this->faker->cpf(false),
             'rg'              => $this->faker->rg(false),
             'endereco'        => $this->faker->address(),

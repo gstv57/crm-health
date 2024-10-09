@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Medico;
 
+use App\Events\AtividadeNova;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Medico\MedicoStoreRequest;
 use App\Models\{Medico, User};
@@ -50,6 +51,7 @@ class MedicoStoreController extends Controller
 
             $medico->especialidades()->sync($data['especialidade']);
             DB::commit();
+            event(new AtividadeNova(User::find(auth()->user->id), 'cadastrou um novo médico.'));
 
             return redirect()->back()->with('success', 'Medico cadastrado com sucesso!');
 

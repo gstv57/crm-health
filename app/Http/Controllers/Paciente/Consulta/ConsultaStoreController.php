@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Paciente\Consulta;
 
+use App\Events\AtividadeNova;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Paciente\Consulta\ConsultaStoreRequest;
-use App\Models\{Consulta, Paciente};
+use App\Models\{Consulta, Paciente, User};
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\{Carbon, Str};
@@ -14,6 +15,7 @@ class ConsultaStoreController extends Controller
     public function __invoke(Paciente $paciente, ConsultaStoreRequest $request)
     {
         $data = $request->validated();
+
         // TODO - Criar Controller de edição de consultas e cancelamento de consultas.
         try {
             $data['paciente_id']            = $paciente->id;
@@ -22,6 +24,7 @@ class ConsultaStoreController extends Controller
             $data['numero_consulta']        = Str::random(10);
             // TODO - secured race condition to not happening multi records to data and hours
             Consulta::create($data);
+            event(new AtividadeNova(User::find(auth()->user->id), 'agendou uma nova consulta.'));
 
             return to_route('consultas.index', $paciente->id)->with('success', 'Consulta cadastrada com sucesso!');
         } catch (Exception $error) {

@@ -1,9 +1,6 @@
 <?php
 
-use App\Models\Consulta;
-use App\Models\Medico;
-use App\Models\Paciente;
-use App\Models\Role;
+use App\Models\{Consulta, Medico, Paciente, Role};
 
 test('should show to doctor your appointments', function () {
     Role::create(['nome' => 'Administrador']);
@@ -25,12 +22,10 @@ test('should show to doctor your appointments', function () {
 
     $response = $this->get(route('medicos.consulta.index'));
 
-
     $response->assertStatus(200);
     $response->assertViewIs('consultas.medico.index');
     $response->assertViewHas('consultas');
 });
-
 
 test('should show to doctor appointments tha pacient x', function () {
     Role::create(['nome' => 'Administrador']);
@@ -52,9 +47,7 @@ test('should show to doctor appointments tha pacient x', function () {
 
     $response = $this->get(route('medicos.consulta.index'));
 
-
     $response->assertStatus(200);
     $response->assertViewIs('consultas.medico.index');
     $response->assertViewHas('consultas');
 });
-

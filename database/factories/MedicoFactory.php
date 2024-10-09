@@ -11,7 +11,7 @@ class MedicoFactory extends Factory
 
     public function definition(): array
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['password' => 123]);
 
         $user->roles()->sync([User::MEDICO]);
 

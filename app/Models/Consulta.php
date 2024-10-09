@@ -6,7 +6,7 @@ use App\Enum\Consulta\{ConsultaStatusEnum, ConsultaTypeEnum};
 use App\Enum\Pagamento\{PagamentoStatusEnum, PagamentoTypeEnum};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 
 class Consulta extends Model
 {
@@ -37,14 +37,19 @@ class Consulta extends Model
         'motivo_cancelamento',
         'exames_realizados',
         'procedimentos_realizados',
+        'data_e_hora_inicio',
+        'data_e_hora_fim',
+        'duracao',
     ];
 
     protected $casts = [
-        'data_e_hora'      => 'datetime',
-        'status_consulta'  => ConsultaStatusEnum::class,
-        'tipo_consulta'    => ConsultaTypeEnum::class,
-        'forma_pagamento'  => PagamentoTypeEnum::class,
-        'status_pagamento' => PagamentoStatusEnum::class,
+        'data_e_hora'        => 'datetime',
+        'data_e_hora_inicio' => 'datetime',
+        'data_e_hora_fim'    => 'datetime',
+        'status_consulta'    => ConsultaStatusEnum::class,
+        'tipo_consulta'      => ConsultaTypeEnum::class,
+        'forma_pagamento'    => PagamentoTypeEnum::class,
+        'status_pagamento'   => PagamentoStatusEnum::class,
     ];
 
     public function paciente(): belongsTo
@@ -57,9 +62,9 @@ class Consulta extends Model
         return $this->belongsTo(Medico::class, 'medico_id');
     }
 
-    public function prontuario(): belongsTo
+    public function prontuario(): hasMany
     {
-        return $this->belongsTo(Prontuario::class, 'prontuario_id');
+        return $this->hasMany(Prontuario::class);
     }
 
     public function agendadoPor(): belongsTo

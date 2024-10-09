@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Dashboard\DashboardControllerAnalise;
-use App\Livewire\Consulta\Medico\ConsultaShowComponent;
 use App\Http\Controllers\Medico\{MedicoCreateController,
     MedicoEditController,
     MedicoIndexController,
@@ -25,6 +23,8 @@ use App\Http\Controllers\Usuario\{UsuarioCreateController,
     UsuarioIndexController,
     UsuarioStoreController,
     UsuarioUpdateController};
+use App\Livewire\Consulta\Medico\GerenciarConsultaComponent;
+use App\Livewire\Dashboard\AdminDashboardComponent;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,7 +32,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard/analise', DashboardControllerAnalise::class)->name('dashboard.analise');
+    Route::get('/dashboard/analise', AdminDashboardComponent::class)->name('dashboard.analise');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -82,7 +82,12 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('medicos/consultas')->group(function () {
         Route::get('/', \App\Http\Controllers\Consulta\Medico\ConsultaIndexController::class)->name('medicos.consulta.index');
-        Route::get('gerenciar/{consulta}', ConsultaShowComponent::class)->name('medicos.consulta.manage');
+        Route::get('gerenciar/{consulta}', GerenciarConsultaComponent::class)->name('medicos.consulta.manage');
+    });
+
+    Route::prefix('minhas-consultas')->group(function () {
+        Route::get('/', \App\Http\Controllers\Consulta\Paciente\PacienteIndexController::class)->name('minhas.consulta.index');
+        Route::get('/visualizar/{consulta}', \App\Livewire\Consulta\Paciente\GerenciarConsultaComponent::class)->name('minhas.consulta.show');
     });
 });
 

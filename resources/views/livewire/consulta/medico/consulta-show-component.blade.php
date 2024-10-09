@@ -1,82 +1,76 @@
-<div class="container-fluid mt-2">
-    <div class="row gx-1">
-        <!-- Informações do Usuário -->
+<div class="container-fluid mt-3">
+    <div class="row gx-2">
+        <!-- Informações do Paciente -->
         <div class="col-3">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Informações do Paciente</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li><strong>Nome:</strong> João da Silva</li>
-                        <li><strong>Data de Nascimento:</strong> 15/08/1985</li>
-                        <li><strong>Peso:</strong> 75 kg</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Prontuario</h4>
-                </div>
-                <div class="card-body">
-                    <div class="form-group mb-3">
-                        <label for="prontuario">Descreva..</label>
-                        <textarea id="prontuario" wire:model="prontuario" class="form-control" rows="3"></textarea>
-                    </div>
-                </div>
+            <livewire:consulta.components.informacoes-paciente :consulta="$consulta"/>
 
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Status</h4>
-                </div>
-                <div class="card-body d-flex">
-                    <button class="btn btn-sm btn-primary me-2" style="margin-right: 10px;">
-                        <svg> ... </svg> Em Progresso
-                    </button>
-                    <button class="btn btn-sm btn-danger me-2" style="margin-right: 10px;">
-                        <svg> ... </svg> Cancelar
-                    </button>
-                    <button class="btn btn-sm btn-dark">
-                        <svg> ... </svg> Finalizar
-                    </button>
-                </div>
-            </div>
+            <livewire:consulta.components.status-consulta :consulta="$consulta" />
 
         </div>
         <!-- Detalhes da Consulta -->
         <div class="col-9">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: {{ $consultaProgresso ?? 50 }}%;" aria-valuenow="{{ $consultaProgresso ?? 50 }}" aria-valuemin="0" aria-valuemax="100">{{ $consultaProgresso ?? 50}}%</div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Detalhes da Consulta</h4>
+                    <i class="bi bi-clipboard-check fs-4"></i>
                 </div>
                 <div class="card-body">
-                    <!-- Link para Telemedicina -->
-                    <div class="form-group mb-3">
-                        <div class="clipboard">
-                            <form class="form-horizontal">
-                                <input type="text" class="form-control mb-4" id="input-copy" value="http://www.admin-dashboard.com">
-                                <a class="mb-1 btn btn-primary" href="javascript:;" data-clipboard-action="copy" data-clipboard-target="#input-copy"><svg> ... </svg> Copiar</a>
-                            </form>
+                    @if($consulta->tipo_consulta == \App\Enum\Consulta\ConsultaTypeEnum::TELEMEDICINA)
+                        <!-- Link para Telemedicina -->
+                        <div class="form-group mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="input-copy"
+                                       value="http://www.admin-dashboard.com" readonly>
+                                <button class="btn btn-primary" data-clipboard-action="copy"
+                                        data-clipboard-target="#input-copy">
+                                    <i class="bi bi-clipboard"></i> Copiar Link
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Anotações da Consulta -->
-                    <div class="form-group mb-3">
-                        <label for="anotacoes">Anotações sobre a Consulta</label>
-                        <textarea id="anotacoes" wire:model="anotacoes" class="form-control" rows="3"></textarea>
-                    </div>
-
-                    <!-- Botão para Criar Prontuário -->
-                    <div class="text-end">
-                        <button wire:click="criarProntuario" class="btn btn-primary">Criar Nota</button>
-                    </div>
+                    @endif
                 </div>
             </div>
+            @if($consulta->status_consulta == \App\Enum\Consulta\ConsultaStatusEnum::ANDAMENTO)
+                <!-- Botão de Exibir/Esconder Prontuário -->
+                <button class="btn btn-primary mb-3" wire:click="toggleMostrarProntuario">
+                    <i class="bi {{ $mostrar_prontuario ? 'bi-eye-slash' : 'bi-eye' }} me-1"></i>
+                    {{ $mostrar_prontuario ? 'Ocultar Prontuário' : 'Criar Novo Prontuário' }}
+                    "{{ $consulta->status_consulta }}"
+                </button>
+           @endif
+
+            <!-- Lista de Prontuários -->
+            @if(!$mostrar_prontuario)
+                <div class="row">
+                    @foreach($consulta->prontuario as $item)
+                        <div class="col-md-3">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-header d-flex justify-content-between">
+                                    <span class="badge badge-dark">{{ $item->created_at->format('d/m/Y H:i') }}</span> <span class="badge badge-info">#{{ $item->id }}</span>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <button class="btn btn-primary">
+                                        <i class="bi bi-file-earmark-text"></i> Ver
+                                    </button>
+                                    <button class="btn btn-danger"
+                                            wire:click="handleDestroyProntuario({{ $item->id }})"
+                                            wire:confirm.prompt="Você tem certeza que deseja excluír esse prontuario?\n\nDigite EXCLUIR para confirmar|EXCLUIR"
+                                    >
+                                        <i class="bi bi-trash"></i> Excluir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
+            <!-- Formulário de Criação de Prontuário -->
+            @if($mostrar_prontuario)
+                <livewire:prontuario.prontuario-create-component :consulta="$consulta"></livewire:prontuario.prontuario-create-component>
+            @else
+                <div style="height: 500px;"></div>
+            @endif
         </div>
     </div>
 </div>

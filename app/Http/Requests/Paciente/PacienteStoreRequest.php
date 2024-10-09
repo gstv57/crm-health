@@ -32,7 +32,7 @@ class PacienteStoreRequest extends FormRequest
                 'before_or_equal:today',
                 'after_or_equal:' . Carbon::now()->subYears(120)->format('Y-m-d'),
             ],
-            'sexo'        => 'required|in:masculino,feminino,outro',
+            'sexo'        => 'required|in:Masculino,Feminino,Outro',
             'cpf'         => 'required|cpf|unique:pacientes,cpf',
             'rg'          => 'nullable|string|max:20|unique:pacientes,rg',
             'endereco'    => 'required|string|max:255',

@@ -29,6 +29,8 @@ class Paciente extends Model
         'matricula',
     ];
 
+    protected $casts = ['data_nascimento' => 'date'];
+
     public function user(): belongsTo
     {
         return $this->belongsTo(User::class);

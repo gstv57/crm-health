@@ -39,9 +39,9 @@ class Medico extends Model
     {
         return $this->belongsToMany(Especialidade::class, 'especialidade_has_medicos', 'medico_id', 'especialidade_id');
     }
-
     public function consultas(): HasMany
     {
         return $this->hasMany(Consulta::class);
     }
+
 }

@@ -30,7 +30,7 @@ class ConsultaFactory extends Factory
             'forma_pagamento'          => $this->faker->randomElement(PagamentoTypeEnum::cases()),
             'valor_consulta'           => $this->faker->randomFloat(2, 0, 1000),
             'status_pagamento'         => $this->faker->randomElement(PagamentoStatusEnum::cases()),
-            'status_consulta'          => $this->faker->randomElement(ConsultaStatusEnum::cases()),
+            'status_consulta'          => ConsultaStatusEnum::AGENDADA,
             'motivo_cancelamento'      => $this->faker->word(),
             'exames_realizados'        => $this->faker->word(),
             'procedimentos_realizados' => $this->faker->word(),

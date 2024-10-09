@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Carbon;
 use App\Models\{Paciente, Role, User};
 use Faker\Factory as Faker;
 
@@ -63,7 +65,7 @@ test('create-new-paciente', function () {
         'sobrenome'       => $faker->lastName,
         'telefone'        => $faker->phoneNumber,
         'data_nascimento' => $faker->dateTimeBetween('-80 years', '-18 years')->format('Y-m-d'),
-        'sexo'            => $faker->randomElement(['masculino', 'feminino']),
+        'sexo'            => $faker->randomElement(['Masculino', 'Feminino', 'Outro']),
         'cpf'             => Paciente::gerarCpf(),
         'rg'              => Paciente::gerarCpf(),
         'endereco'        => $faker->address,
@@ -77,6 +79,7 @@ test('create-new-paciente', function () {
     $response = $this->post(route('paciente.store'), $payload);
 
     $response->assertStatus(302);
+
     $response->assertSessionHas('success', 'Paciente cadastrado com sucesso!');
 
     $this->assertDatabaseHas('pacientes', [

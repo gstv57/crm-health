@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Paciente;
 
+use App\Events\AtividadeNova;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Paciente\PacienteStoreRequest;
 use App\Models\{Paciente, User};
@@ -22,7 +23,7 @@ class PacienteStoreController extends Controller
             $data['matricula'] = Paciente::createMatricula();
             $paciente          = Paciente::create($data);
 
-            if (!$paciente->user_id) {
+            if (! $paciente->user_id) {
                 $password = Str::random(10);
 
                 $user = User::create([
@@ -35,6 +36,7 @@ class PacienteStoreController extends Controller
 
                 $paciente->user_id = $user->id;
                 $paciente->save();
+                event(new AtividadeNova(User::find(auth()->user()->id), 'criou um novo paciente.'));
 
                 return to_route('paciente.edit', $paciente)->with('success', 'Paciente cadastrado com sucesso!');
             }

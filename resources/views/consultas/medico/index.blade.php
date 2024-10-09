@@ -70,8 +70,9 @@
                             </td>
                             <td class="text-center">
                                 <span class="shadow-none badge badge-{{ match($consulta->status_consulta) {
-                                    \App\Enum\Consulta\ConsultaStatusEnum::AGENDADA => 'success',
+                                    \App\Enum\Consulta\ConsultaStatusEnum::ANDAMENTO => 'success',
                                     \App\Enum\Consulta\ConsultaStatusEnum::REALIZADA => 'primary',
+                                    \App\Enum\Consulta\ConsultaStatusEnum::AGENDADA => 'secondary',
                                     \App\Enum\Consulta\ConsultaStatusEnum::CANCELADA => 'danger',
                                     \App\Enum\Consulta\ConsultaStatusEnum::REMARCADA => 'warning',
                                 } }}">

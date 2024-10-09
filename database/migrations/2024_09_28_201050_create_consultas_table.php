@@ -14,7 +14,6 @@ return new class () extends Migration {
             $table->id();
             $table->unsignedBigInteger('paciente_id')->nullable();
             $table->unsignedBigInteger('medico_id')->nullable();
-            $table->unsignedBigInteger('prontuario_id')->nullable();
             $table->unsignedBigInteger('usuario_agendamento_id')->nullable();
             $table->unsignedBigInteger('cancelada_por')->nullable();
 
@@ -38,9 +37,12 @@ return new class () extends Migration {
             $table->text('exames_realizados')->nullable();
             $table->text('procedimentos_realizados')->nullable();
 
+            $table->dateTime('data_e_hora_inicio')->nullable();
+            $table->dateTime('data_e_hora_fim')->nullable();
+            $table->integer('duracao')->nullable();
+
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('set null');
             $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('set null');
-            $table->foreign('prontuario_id')->references('id')->on('prontuarios')->onDelete('set null');
             $table->foreign('usuario_agendamento_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('cancelada_por')->references('id')->on('users')->onDelete('set null');
 

@@ -4,6 +4,6 @@ namespace App\Enum\Consulta;
 
 enum ConsultaTypeEnum: string
 {
-    case PRESENCIAL   = 'presencial';
-    case TELEMEDICINA = 'telemedicina';
+    case PRESENCIAL   = 'Presencial';
+    case TELEMEDICINA = 'Telemedicina';
 }
