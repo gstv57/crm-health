@@ -14,7 +14,9 @@ class LogActivityEvent implements ShouldDispatchAfterCommit
     use InteractsWithSockets;
     use SerializesModels;
 
-    public function __construct(public User $user, public string $descricao) {}
+    public function __construct(public User $user, public string $descricao)
+    {
+    }
     public function broadcastOn(): array
     {
         return [

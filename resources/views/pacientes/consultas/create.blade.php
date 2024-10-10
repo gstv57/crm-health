@@ -98,8 +98,8 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="valor_consulta">Valor da Consulta</label>
-                                <input type="number" id="valor_consulta" name="valor_consulta" class="form-control" step="0.01" placeholder="Valor da consulta (opcional)">
+                                <label for="valor">Valor da Consulta</label>
+                                <input type="number" id="valor" name="valor" class="form-control" step="0.01" placeholder="Valor da consulta (opcional)">
                             </div>
                         </div>
                         <div class="row mb-4">

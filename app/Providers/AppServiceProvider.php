@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Consulta;
-use App\Observers\ConsultaObserver;
+use App\Models\{Pagamento};
+use App\Observers\{PagamentoObserver};
 use Faker\{Factory, Generator};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
             return Factory::create('pt_BR');
         });
     }
-
     /**
      * Bootstrap any application services.
      */
@@ -30,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $class = $model::class;
             info("Attempted to lazy load [{$relation}] on model [{$model}]");
         });
-        Consulta::observe(ConsultaObserver::class);
 
+        Pagamento::observe(PagamentoObserver::class);
     }
 }

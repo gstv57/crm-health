@@ -8,5 +8,6 @@ enum PagamentoTypeEnum: string
     case PIX      = 'Pix';
     case BOLETO   = 'Boleto';
     case CONVENIO = 'Convenio';
+    case DINHEIRO = 'Dinheiro';
 
 }

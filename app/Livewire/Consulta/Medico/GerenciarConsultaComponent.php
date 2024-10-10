@@ -2,8 +2,7 @@
 
 namespace App\Livewire\Consulta\Medico;
 
-use App\Events\LogActivityEvent;
-use App\Models\{Consulta, Prontuario, User};
+use App\Models\{Consulta, Prontuario};
 use Illuminate\Contracts\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
@@ -38,7 +37,7 @@ class GerenciarConsultaComponent extends Component
     public function handleDestroyProntuario(Prontuario $prontuario): void
     {
         $prontuario->delete();
-        event(new LogActivityEvent(User::find($this->consulta->medico_id), 'excluiu um prontuario.'));
+
         $this->alert('success', 'Prontuario excluído com sucesso!');
     }
     #[On('prontuario_created')]
@@ -46,6 +45,6 @@ class GerenciarConsultaComponent extends Component
     {
         $this->dispatch('$refresh');
         $this->mostrar_prontuario = false;
-        event(new LogActivityEvent(User::find($this->consulta->medico_id), 'criou um novo prontuario.'));
+
     }
 }

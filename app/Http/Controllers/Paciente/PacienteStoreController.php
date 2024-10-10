@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Paciente;
 
-use App\Events\LogActivityEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Paciente\PacienteStoreRequest;
 use App\Models\{Paciente, User};
@@ -40,7 +39,6 @@ class PacienteStoreController extends Controller
                 $paciente->save();
 
                 DB::commit();
-                event(new LogActivityEvent(User::find(auth()->user()->id), 'criou um novo paciente.'));
 
                 return to_route('paciente.edit', $paciente)->with('success', 'Paciente cadastrado com sucesso!');
             }

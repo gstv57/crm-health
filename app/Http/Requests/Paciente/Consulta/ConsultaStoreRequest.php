@@ -37,7 +37,7 @@ class ConsultaStoreRequest extends FormRequest
             'historico_familiar'       => ['nullable', 'string'],
             'historico_medico'         => ['nullable', 'string'],
             'forma_pagamento'          => ['required', 'string', Rule::in(PagamentoTypeEnum::cases())],
-            'valor_consulta'           => ['nullable', 'numeric', 'min:0'],
+            'valor'                    => ['nullable', 'numeric', 'min:0'],
             'status_pagamento'         => ['required', 'string', Rule::in(PagamentoStatusEnum::cases())],
             'exames_realizados'        => ['nullable', 'string'],
             'procedimentos_realizados' => ['nullable', 'string'],

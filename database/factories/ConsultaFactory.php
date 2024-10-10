@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Enum\Consulta\{ConsultaStatusEnum, ConsultaTypeEnum};
-use App\Enum\Pagamento\{PagamentoStatusEnum, PagamentoTypeEnum};
 use App\Models\{Consulta};
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\{Carbon, Str};
@@ -27,9 +26,6 @@ class ConsultaFactory extends Factory
             'historico_doenca_atual'   => $this->faker->word(),
             'historico_familiar'       => $this->faker->word(),
             'historico_medico'         => $this->faker->word(),
-            'forma_pagamento'          => $this->faker->randomElement(PagamentoTypeEnum::cases()),
-            'valor_consulta'           => $this->faker->randomFloat(2, 0, 1000),
-            'status_pagamento'         => $this->faker->randomElement(PagamentoStatusEnum::cases()),
             'status_consulta'          => ConsultaStatusEnum::AGENDADA,
             'motivo_cancelamento'      => $this->faker->word(),
             'exames_realizados'        => $this->faker->word(),
