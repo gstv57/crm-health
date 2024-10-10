@@ -17,6 +17,7 @@ return new class () extends Migration {
             $table->string('forma_pagamento');
             $table->string('status_pagamento');
             $table->decimal('valor');
+            $table->string('id_transacao')->nullable();
             $table->timestamps();
         });
     }

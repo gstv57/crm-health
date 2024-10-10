@@ -23,6 +23,7 @@ use App\Http\Controllers\Usuario\{UsuarioCreateController,
     UsuarioIndexController,
     UsuarioStoreController,
     UsuarioUpdateController};
+use App\Http\Controllers\Webhook\HandleReceive;
 use App\Livewire\Consulta\Medico\GerenciarConsultaComponent;
 use App\Livewire\Dashboard\AdminDashboardComponent;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('webhook', HandleReceive::class)->name('webhook.handle');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard/analise', AdminDashboardComponent::class)->name('dashboard.analise');

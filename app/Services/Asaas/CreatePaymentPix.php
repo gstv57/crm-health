@@ -36,7 +36,7 @@ class CreatePaymentPix
                     'customer'    => $this->customer_id,
                     'billingType' => 'PIX',
                     'value'       => $this->amount,
-                    'dueDate'     => '2024-10-10',
+                    'dueDate'     => '2024-12-12',
                 ]),
                 'headers' => [
                     'accept'       => 'application/json',
@@ -51,7 +51,10 @@ class CreatePaymentPix
                 $data = json_decode($body, true);
 
                 if (is_array($data)) {
-                    return $data['invoiceUrl'];
+                    return [
+                        'url'          => $data['invoiceUrl'],
+                        'id_transacao' => $data['id'],
+                    ];
                 }
             }
 

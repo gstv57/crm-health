@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pagamento extends Model
 {
-    protected $fillable = ['forma_pagamento', 'status_pagamento', 'valor'];
+    protected $fillable = ['forma_pagamento', 'status_pagamento', 'valor', 'id_transacao'];
 
     protected $casts = [
         'forma_pagamento'  => PagamentoTypeEnum::class,

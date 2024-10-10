@@ -3,7 +3,8 @@
 namespace App\Observers;
 
 use App\Enum\Pagamento\PagamentoStatusEnum;
-use App\Jobs\HandleTypeInvoiceJob;
+use App\Events\PaymentReceive;
+use App\Jobs\{HandleConfirmConsulta, HandleTypeInvoiceJob};
 use App\Models\Pagamento;
 
 class PagamentoObserver
@@ -25,9 +26,13 @@ class PagamentoObserver
      */
     public function updated(Pagamento $pagamento): void
     {
-        //
-    }
+        if ($pagamento->status_pagamento === PagamentoStatusEnum::PAGO) {
+            $pagamento->load('consulta');
 
+            HandleConfirmConsulta::dispatch($pagamento->consulta);
+            event(new PaymentReceive($pagamento));
+        }
+    }
     /**
      * Handle the Pagamento "deleted" event.
      */
@@ -44,11 +49,4 @@ class PagamentoObserver
         //
     }
 
-    /**
-     * Handle the Pagamento "force deleted" event.
-     */
-    public function forceDeleted(Pagamento $pagamento): void
-    {
-        //
-    }
 }
