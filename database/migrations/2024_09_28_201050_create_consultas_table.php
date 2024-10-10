@@ -31,8 +31,8 @@ return new class () extends Migration {
             $table->text('historico_medico')->nullable();
             $table->string('forma_pagamento')->nullable();
             $table->decimal('valor_consulta')->nullable();
-            $table->string('status_pagamento')->default('pendente');
-            $table->string('status_consulta')->default('agendada');
+            $table->string('status_pagamento')->default('Pendente');
+            $table->string('status_consulta')->default('Aguardando pagamento');
             $table->text('motivo_cancelamento')->nullable();
             $table->text('exames_realizados')->nullable();
             $table->text('procedimentos_realizados')->nullable();

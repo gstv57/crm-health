@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Paciente;
 
-use App\Events\AtividadeNova;
+use App\Events\LogActivityEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Paciente\PacienteStoreRequest;
 use App\Models\{Paciente, User};
-use App\Services\Assas\CreateCustomer;
+use App\Services\Asaas\CreateCustomer;
 use Exception;
 use Illuminate\Support\Facades\{DB, Log};
 use Illuminate\Support\Str;
@@ -27,7 +27,7 @@ class PacienteStoreController extends Controller
             $data['customer_id'] = $customer_id;
             $paciente            = Paciente::create($data);
 
-            if (! $paciente->user_id) {
+            if (!$paciente->user_id) {
                 $password = Str::random(10);
                 $user     = User::create([
                     'name'       => $paciente->primeiro_nome . ' ' . $paciente->sobrenome,
@@ -40,7 +40,7 @@ class PacienteStoreController extends Controller
                 $paciente->save();
 
                 DB::commit();
-                event(new AtividadeNova(User::find(auth()->user()->id), 'criou um novo paciente.'));
+                event(new LogActivityEvent(User::find(auth()->user()->id), 'criou um novo paciente.'));
 
                 return to_route('paciente.edit', $paciente)->with('success', 'Paciente cadastrado com sucesso!');
             }

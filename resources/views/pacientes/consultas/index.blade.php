@@ -91,6 +91,7 @@
                                     \App\Enum\Consulta\ConsultaStatusEnum::REALIZADA => 'primary',
                                     \App\Enum\Consulta\ConsultaStatusEnum::CANCELADA => 'danger',
                                     \App\Enum\Consulta\ConsultaStatusEnum::REMARCADA => 'warning',
+                                    \App\Enum\Consulta\ConsultaStatusEnum::AGUARDANDO_PAGAMENTO => 'dark',
                                 } }}">
                                     {{ strtoupper($consulta->status_consulta->value) }}
                                 </span>

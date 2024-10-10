@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Consulta;
+use App\Observers\ConsultaObserver;
 use Faker\{Factory, Generator};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $class = $model::class;
             info("Attempted to lazy load [{$relation}] on model [{$model}]");
         });
+        Consulta::observe(ConsultaObserver::class);
 
     }
 }

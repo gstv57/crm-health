@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Carbon;
 use App\Models\{Paciente, Role, User};
 use Faker\Factory as Faker;
 

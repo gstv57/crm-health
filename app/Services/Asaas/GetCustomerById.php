@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Assas;
+namespace App\Services\Asaas;
 
 use Exception;
 use GuzzleHttp\Client;
@@ -34,7 +34,7 @@ class GetCustomerById
      */
     public function __construct(string $customer_id)
     {
-        $this->client      = new Client;
+        $this->client      = new Client();
         $this->customer_id = $customer_id;
         $this->token       = getenv('ASAAS_TOKEN');
         $this->url         = getenv('ASAAS_URL_ENVIRONMENT');

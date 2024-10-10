@@ -6,7 +6,7 @@ use App\Models\{Atividade, User};
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
-class AtividadeNovaHandleJob implements ShouldQueue
+class HandleLogJob implements ShouldQueue
 {
     use Queueable;
 

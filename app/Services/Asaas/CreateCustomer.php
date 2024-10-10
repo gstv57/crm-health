@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Assas;
+namespace App\Services\Asaas;
 
 use Exception;
 use GuzzleHttp\Client;
@@ -21,7 +21,7 @@ class CreateCustomer
 
     public function __construct(string $nome, string $cpf)
     {
-        $this->client = new Client;
+        $this->client = new Client();
         $this->nome   = $nome;
         $this->cpf    = $cpf;
         $this->token  = getenv('ASAAS_TOKEN');

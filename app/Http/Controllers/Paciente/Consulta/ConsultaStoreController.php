@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Paciente\Consulta;
 
-use App\Events\AtividadeNova;
+use App\Events\LogActivityEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Paciente\Consulta\ConsultaStoreRequest;
 use App\Models\{Consulta, Paciente, User};
@@ -24,10 +24,11 @@ class ConsultaStoreController extends Controller
             $data['numero_consulta']        = Str::random(10);
             // TODO - secured race condition to not happening multi records to data and hours
             Consulta::create($data);
-            event(new AtividadeNova(User::find(auth()->user->id), 'agendou uma nova consulta.'));
+            event(new LogActivityEvent(User::find(auth()->user()->id), 'agendou uma nova consulta.'));
 
             return to_route('consultas.index', $paciente->id)->with('success', 'Consulta cadastrada com sucesso!');
         } catch (Exception $error) {
+            dd($error->getMessage());
             Log::info($error->getMessage());
 
             return to_route('consultas.index', $paciente->id)->with('error', 'Algo de errado aconteceu, entre em contato com o suporte.');

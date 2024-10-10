@@ -3,7 +3,7 @@
 namespace App\Livewire\Consulta\Components;
 
 use App\Enum\Consulta\ConsultaStatusEnum;
-use App\Events\AtividadeNova;
+use App\Events\LogActivityEvent;
 use App\Livewire\Consulta\Medico\GerenciarConsultaComponent;
 use App\Models\{Consulta, User};
 use Exception;
@@ -55,7 +55,7 @@ class StatusConsulta extends Component
             $this->consulta->status_consulta    = ConsultaStatusEnum::ANDAMENTO;
             $this->consulta->data_e_hora_inicio = now();
             $this->consulta->save();
-            event(new AtividadeNova(User::find($this->consulta->medico_id), 'iniciou um novo atendimento.'));
+            event(new LogActivityEvent(User::find($this->consulta->medico_id), 'iniciou um novo atendimento.'));
             DB::commit();
             $this->alert('success', 'A consulta foi iniciada com sucesso!');
         } catch (Exception $error) {
@@ -72,7 +72,7 @@ class StatusConsulta extends Component
             $this->consulta->data_e_hora_fim = now();
             $this->consulta->duracao         = intval($this->consulta->data_e_hora_inicio->diffInMinutes($this->consulta->data_e_hora_fim));
             $this->consulta->save();
-            event(new AtividadeNova(User::find($this->consulta->medico_id), 'finalizou um atendimento.'));
+            event(new LogActivityEvent(User::find($this->consulta->medico_id), 'finalizou um atendimento.'));
             DB::commit();
             $this->alert('success', 'A consulta foi finalizada com sucesso!');
         } catch (Exception $error) {
