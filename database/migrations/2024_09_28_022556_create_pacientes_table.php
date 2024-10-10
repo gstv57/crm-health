@@ -30,6 +30,7 @@ return new class () extends Migration {
             $table->string('telefone');
             $table->uuid('matricula')->unique();
             $table->boolean('ativo')->default(true);
+            $table->string('customer_id')->nullable();
             $table->timestamps();
         });
     }

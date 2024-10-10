@@ -78,7 +78,7 @@
                             <label for="telefone">Telefone</label>
                             <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone" value="{{ $paciente->telefone }}">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="{{ $paciente->user?->email }}">
                         </div>
@@ -89,6 +89,10 @@
                         <div class="col-md-2">
                             <label for="matricula">Matricula</label>
                             <input type="text" class="form-control" id="matricula" name="matricula" value="{{ $paciente->matricula }}">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="matricula">CUSTOMER_ID</label>
+                            <input type="text" class="form-control" id="matricula" name="matricula" value="{{ $paciente->customer_id ?? 'SEM CUSTOMER_ID' }}">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success mt-3">Atualizar</button>

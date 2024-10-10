@@ -27,6 +27,7 @@ class Paciente extends Model
         'cep',
         'telefone',
         'matricula',
+        'customer_id'
     ];
 
     protected $casts = ['data_nascimento' => 'date'];

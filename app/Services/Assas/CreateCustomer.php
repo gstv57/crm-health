@@ -48,7 +48,7 @@ class CreateCustomer
             $data = json_decode($body, true);
 
             if ($response->getStatusCode() == 200) {
-                return $data['id'];
+                return (string) $data['id'];
             }
 
             return false;
