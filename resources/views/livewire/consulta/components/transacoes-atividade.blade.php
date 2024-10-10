@@ -26,130 +26,34 @@
         </div>
 
         <div class="widget-content">
-            <div class="transactions-list">
-                <div class="t-item">
-                    <div class="t-company-name">
-                        <div class="t-icon">
-                            <div class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-home">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
+            @forelse($pagamentos as $pagamento)
+                <div class="transactions-list">
+                    <div class="t-item">
+                        <div class="t-company-name">
+                            <div class="t-icon">
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="feather feather-user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
                             </div>
-                        </div>
-                        <div class="t-name">
-                            <h4>Electricity Bill</h4>
-                            <p class="meta-date">04 Jan 1:00PM</p>
-                        </div>
+                            <div class="t-name">
+                                <h4><a href="{{ route('paciente.edit',['paciente' => $pagamento->consulta->paciente->id ] ) }}">{{ $pagamento->consulta->paciente->primeiro_nome }}</a></h4>
+                                <p class="meta-date">{{ $pagamento->updated_at->format('d/m/Y H:i') }}</p>
+                            </div>
 
-                    </div>
-                    <div class="t-rate rate-dec">
-                        <p><span>-$16.44</span></p>
+                        </div>
+                        <div class="t-rate rate-dec">
+                            <p><span class="text-success">+ {{ number_format($pagamento->valor, 2) }}</span></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{--                    <div class="transactions-list t-info">--}}
-            {{--                        <div class="t-item">--}}
-            {{--                            <div class="t-company-name">--}}
-            {{--                                <div class="t-icon">--}}
-            {{--                                    <div class="avatar avatar-xl">--}}
-            {{--                                        <span class="avatar-title">SP</span>--}}
-            {{--                                    </div>--}}
-            {{--                                </div>--}}
-            {{--                                <div class="t-name">--}}
-            {{--                                    <h4>Shaun Park</h4>--}}
-            {{--                                    <p class="meta-date">10 Jan 1:00PM</p>--}}
-            {{--                                </div>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="t-rate rate-inc">--}}
-            {{--                                <p><span>+$36.11</span></p>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="transactions-list">--}}
-            {{--                        <div class="t-item">--}}
-            {{--                            <div class="t-company-name">--}}
-            {{--                                <div class="t-icon">--}}
-            {{--                                    <div class="avatar avatar-xl">--}}
-            {{--                                        <span class="avatar-title">AD</span>--}}
-            {{--                                    </div>--}}
-            {{--                                </div>--}}
-            {{--                                <div class="t-name">--}}
-            {{--                                    <h4>Amy Diaz</h4>--}}
-            {{--                                    <p class="meta-date">31 Jan 1:00PM</p>--}}
-            {{--                                </div>--}}
+            @empty
 
-            {{--                            </div>--}}
-            {{--                            <div class="t-rate rate-inc">--}}
-            {{--                                <p><span>+$66.44</span></p>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="transactions-list t-secondary">--}}
-            {{--                        <div class="t-item">--}}
-            {{--                            <div class="t-company-name">--}}
-            {{--                                <div class="t-icon">--}}
-            {{--                                    <div class="icon">--}}
-            {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-            {{--                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"--}}
-            {{--                                             stroke-linecap="round" stroke-linejoin="round"--}}
-            {{--                                             class="feather feather-home">--}}
-            {{--                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>--}}
-            {{--                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>--}}
-            {{--                                        </svg>--}}
-            {{--                                    </div>--}}
-            {{--                                </div>--}}
-            {{--                                <div class="t-name">--}}
-            {{--                                    <h4>Netflix</h4>--}}
-            {{--                                    <p class="meta-date">02 Feb 1:00PM</p>--}}
-            {{--                                </div>--}}
-
-            {{--                            </div>--}}
-            {{--                            <div class="t-rate rate-dec">--}}
-            {{--                                <p><span>-$32.00</span></p>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="transactions-list t-info">--}}
-            {{--                        <div class="t-item">--}}
-            {{--                            <div class="t-company-name">--}}
-            {{--                                <div class="t-icon">--}}
-            {{--                                    <div class="avatar avatar-xl">--}}
-            {{--                                        <span class="avatar-title">DA</span>--}}
-            {{--                                    </div>--}}
-            {{--                                </div>--}}
-            {{--                                <div class="t-name">--}}
-            {{--                                    <h4>Daisy Anderson</h4>--}}
-            {{--                                    <p class="meta-date">15 Feb 1:00PM</p>--}}
-            {{--                                </div>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="t-rate rate-inc">--}}
-            {{--                                <p><span>+$10.08</span></p>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="transactions-list">--}}
-            {{--                        <div class="t-item">--}}
-            {{--                            <div class="t-company-name">--}}
-            {{--                                <div class="t-icon">--}}
-            {{--                                    <div class="avatar avatar-xl">--}}
-            {{--                                        <span class="avatar-title">OG</span>--}}
-            {{--                                    </div>--}}
-            {{--                                </div>--}}
-            {{--                                <div class="t-name">--}}
-            {{--                                    <h4>Oscar Garner</h4>--}}
-            {{--                                    <p class="meta-date">20 Feb 1:00PM</p>--}}
-            {{--                                </div>--}}
-
-            {{--                            </div>--}}
-            {{--                            <div class="t-rate rate-dec">--}}
-            {{--                                <p><span>-$22.00</span></p>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
+            @endforelse
         </div>
     </div>
 </div>

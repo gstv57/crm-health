@@ -21,6 +21,7 @@
     <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('plugins/jquery-step/jquery.steps.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    @vite(['resources/js/app.js'])
     @livewireStyles
 </head>
 <body>

@@ -2,12 +2,13 @@
 
 namespace App\Events;
 
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Models\{Pagamento};
-use Illuminate\Broadcasting\{InteractsWithSockets, PrivateChannel};
+use Illuminate\Broadcasting\{Channel, InteractsWithSockets, PrivateChannel};
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PaymentReceive
+class PaymentReceive implements ShouldBroadcast
 {
     use Dispatchable;
     use InteractsWithSockets;
@@ -29,7 +30,7 @@ class PaymentReceive
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('payment-receive'),
+            new Channel('payment-receive'),
         ];
     }
 }
