@@ -2,9 +2,9 @@
 
 namespace App\Events;
 
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Models\{Pagamento};
-use Illuminate\Broadcasting\{Channel, InteractsWithSockets, PrivateChannel};
+use Illuminate\Broadcasting\{Channel, InteractsWithSockets};
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 

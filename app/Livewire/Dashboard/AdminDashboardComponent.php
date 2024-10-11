@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Dashboard;
 
-use App\Models\Pagamento;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
