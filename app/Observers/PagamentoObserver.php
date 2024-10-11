@@ -28,7 +28,6 @@ class PagamentoObserver
     {
         if ($pagamento->status_pagamento === PagamentoStatusEnum::PAGO) {
             $pagamento->load('consulta');
-
             HandleConfirmConsulta::dispatch($pagamento->consulta);
             event(new PaymentReceive($pagamento));
         }

@@ -34,7 +34,7 @@ class ConsultaFaturaMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'fatura.pix',
+            view: 'fatura.sample',
             with: [
                 'linkFatura' => $this->url,
             ],

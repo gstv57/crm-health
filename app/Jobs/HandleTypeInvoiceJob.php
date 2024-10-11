@@ -26,6 +26,7 @@ class HandleTypeInvoiceJob implements ShouldQueue
     {
         match ($this->pagamento->forma_pagamento) {
             PagamentoTypeEnum::PIX => SendInvoicePixJob::dispatch(Consulta::find($this->pagamento->consulta->id), Pagamento::find($this->pagamento->id)),
+            PagamentoTypeEnum::CC  => SendInvoiceCreditCardJob::dispatch(Consulta::find($this->pagamento->consulta->id), Pagamento::find($this->pagamento->id)),
             default                => throw ValidationException::withMessages(['forma_pagamento' => 'Esse tipo de pagamento não existe.']),
         };
     }
