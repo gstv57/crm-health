@@ -33,7 +33,7 @@ class ConsultaStoreController extends Controller
 
             return to_route('consultas.index', $paciente->id)->with('success', 'Consulta cadastrada com sucesso!');
         } catch (Exception $error) {
-            dd($error->getMessage());
+
             Log::info($error->getMessage());
 
             return to_route('consultas.index', $paciente->id)->with('error', 'Algo de errado aconteceu, entre em contato com o suporte.');
