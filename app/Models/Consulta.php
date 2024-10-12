@@ -37,12 +37,14 @@ class Consulta extends Model
         'data_e_hora_fim',
         'duracao',
         'reminded',
+        'cancelada_em',
     ];
 
     protected $casts = [
         'data_e_hora'        => 'datetime',
         'data_e_hora_inicio' => 'datetime',
         'data_e_hora_fim'    => 'datetime',
+        'cancelada_em'       => 'datetime',
         'status_consulta'    => ConsultaStatusEnum::class,
         'tipo_consulta'      => ConsultaTypeEnum::class,
     ];

@@ -16,7 +16,7 @@ return new class () extends Migration {
             $table->unsignedBigInteger('medico_id')->nullable();
             $table->unsignedBigInteger('usuario_agendamento_id')->nullable();
             $table->unsignedBigInteger('cancelada_por')->nullable();
-
+            $table->dateTime('cancelada_em')->nullable();
             $table->string('numero_consulta')->unique();
             $table->dateTime('data_e_hora');
             $table->string('tipo_consulta');

@@ -6,7 +6,8 @@ use App\Http\Controllers\Medico\{MedicoCreateController,
     MedicoStoreController,
     MedicoUpdateController};
 use App\Http\Controllers\Paciente\Consulta\ConsultaIndexController;
-use App\Http\Controllers\Paciente\{Consulta\ConsultaCreateController,
+use App\Http\Controllers\Paciente\{
+    Consulta\ConsultaCreateController,
     Consulta\ConsultaEditController,
     Consulta\ConsultaStoreController,
     Consulta\ConsultaUpdateController,
@@ -28,6 +29,8 @@ use App\Http\Controllers\Usuario\{UsuarioCreateController,
 use App\Http\Controllers\Webhook\HandleReceive;
 use App\Livewire\Consulta\Medico\GerenciarConsultaComponent;
 use App\Livewire\Dashboard\AdminDashboardComponent;
+use App\Livewire\Paciente\Consulta\CancelamentoComponent;
+use App\Livewire\Transacoes\TransacoesComponent;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -76,6 +79,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/criar', ConsultaStoreController::class)->name('consultas.store');
             Route::get('/editar/{consulta}', ConsultaEditController::class)->name('consultas.edit');
             Route::patch('/editar/{consulta}', ConsultaUpdateController::class)->name('consultas.update');
+            Route::get('/cancelamento/{consulta}', CancelamentoComponent::class)->name('consultas.cancelamento');
         });
     });
 
@@ -95,6 +99,10 @@ Route::middleware('auth')->group(function () {
     Route::prefix('minhas-consultas')->group(function () {
         Route::get('/', \App\Http\Controllers\Consulta\Paciente\PacienteIndexController::class)->name('minhas.consulta.index');
         Route::get('/visualizar/{consulta}', \App\Livewire\Consulta\Paciente\GerenciarConsultaComponent::class)->name('minhas.consulta.show');
+    });
+
+    Route::prefix('transacoes')->group(function () {
+        Route::get('/', TransacoesComponent::class)->name('transacoes.index');
     });
 });
 
