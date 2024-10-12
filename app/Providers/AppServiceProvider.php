@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\{Pagamento};
-use App\Observers\{PagamentoObserver};
+use App\Models\{Consulta, Pagamento};
+use App\Observers\{ConsultaObserver, PagamentoObserver};
 use Faker\{Factory, Generator};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -31,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Pagamento::observe(PagamentoObserver::class);
+        Consulta::observe(ConsultaObserver::class);
     }
 }
