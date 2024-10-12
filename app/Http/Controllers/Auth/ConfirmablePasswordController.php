@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -34,6 +35,24 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(route('dashboard.analise', absolute: false));
+        $user = auth()->user();
+
+        if ($user->roles->contains(User::PACIENTE)) {
+            return redirect()->intended(route('minhas.consulta.index', absolute: false));
+        }
+
+        if ($user->roles->contains(User::RECEPCIONISTA)) {
+            return redirect()->intended(route('paciente.index', absolute: false));
+        }
+
+        if ($user->roles->contains(User::MEDICO)) {
+            return redirect()->intended(route('medicos.consulta.index', absolute: false));
+        }
+
+        if ($user->roles->contains(User::ADMIN)) {
+            return redirect()->intended(route('dashboard.analise', absolute: false));
+        }
+
+        return redirect()->route('login')->with('error', 'Acesso não permitido.');
     }
 }
