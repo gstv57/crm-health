@@ -68,96 +68,96 @@
 
         <ul class="navbar-item flex-row ml-md-auto">
 
-            <li class="nav-item dropdown language-dropdown">
-                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('assets/img/ca.png') }}" class="flag-width" alt="flag">
-                </a>
-                <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ asset('assets/img/de.png') }}"
+{{--            <li class="nav-item dropdown language-dropdown">--}}
+{{--                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown"--}}
+{{--                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    <img src="{{ asset('assets/img/ca.png') }}" class="flag-width" alt="flag">--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">--}}
+{{--                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ asset('assets/img/de.png') }}"--}}
 
-                                                                                    class="flag-width" alt="flag"> <span
-                            class="align-self-center">&nbsp;German</span></a>
-                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ asset('assets/img/jp.png') }}"
-                                                                                    class="flag-width" alt="flag"> <span
-                            class="align-self-center">&nbsp;Japanese</span></a>
-                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ asset('assets/img/fr.png') }}"
-                                                                                    class="flag-width" alt="flag"> <span
-                            class="align-self-center">&nbsp;French</span></a>
-                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('assets/img/ca.png')}}"
-                                                                                    class="flag-width" alt="flag"> <span
-                            class="align-self-center">&nbsp;English</span></a>
-                </div>
-            </li>
+{{--                                                                                    class="flag-width" alt="flag"> <span--}}
+{{--                            class="align-self-center">&nbsp;German</span></a>--}}
+{{--                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ asset('assets/img/jp.png') }}"--}}
+{{--                                                                                    class="flag-width" alt="flag"> <span--}}
+{{--                            class="align-self-center">&nbsp;Japanese</span></a>--}}
+{{--                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ asset('assets/img/fr.png') }}"--}}
+{{--                                                                                    class="flag-width" alt="flag"> <span--}}
+{{--                            class="align-self-center">&nbsp;French</span></a>--}}
+{{--                    <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('assets/img/ca.png')}}"--}}
+{{--                                                                                    class="flag-width" alt="flag"> <span--}}
+{{--                            class="align-self-center">&nbsp;English</span></a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
 
-            <li class="nav-item dropdown message-dropdown">
-                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-mail">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                </a>
-                <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">
-                    <div class="">
-                        <a class="dropdown-item">
-                            <div class="">
+{{--            <li class="nav-item dropdown message-dropdown">--}}
+{{--                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown"--}}
+{{--                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                         class="feather feather-mail">--}}
+{{--                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>--}}
+{{--                        <polyline points="22,6 12,13 2,6"></polyline>--}}
+{{--                    </svg>--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">--}}
+{{--                    <div class="">--}}
+{{--                        <a class="dropdown-item">--}}
+{{--                            <div class="">--}}
 
-                                <div class="media">
-                                    <div class="user-img">
-                                        <div class="avatar avatar-xl">
-                                            <span class="avatar-title rounded-circle">KY</span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="">
-                                            <h5 class="usr-name">Kara Young</h5>
-                                            <p class="msg-title">ACCOUNT UPDATE</p>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <div class="media">--}}
+{{--                                    <div class="user-img">--}}
+{{--                                        <div class="avatar avatar-xl">--}}
+{{--                                            <span class="avatar-title rounded-circle">KY</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <div class="">--}}
+{{--                                            <h5 class="usr-name">Kara Young</h5>--}}
+{{--                                            <p class="msg-title">ACCOUNT UPDATE</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="">
-                                <div class="media">
-                                    <div class="user-img">
-                                        <img src="{{ asset('assets/img/90x90.jpg') }}" class="img-fluid mr-2" alt="avatar">
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="">
-                                            <h5 class="usr-name">Daisy Anderson</h5>
-                                            <p class="msg-title">ACCOUNT UPDATE</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="">
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <a class="dropdown-item">--}}
+{{--                            <div class="">--}}
+{{--                                <div class="media">--}}
+{{--                                    <div class="user-img">--}}
+{{--                                        <img src="{{ asset('assets/img/90x90.jpg') }}" class="img-fluid mr-2" alt="avatar">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <div class="">--}}
+{{--                                            <h5 class="usr-name">Daisy Anderson</h5>--}}
+{{--                                            <p class="msg-title">ACCOUNT UPDATE</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <a class="dropdown-item">--}}
+{{--                            <div class="">--}}
 
-                                <div class="media">
-                                    <div class="user-img">
-                                        <div class="avatar avatar-xl">
-                                            <span class="avatar-title rounded-circle">OG</span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="">
-                                            <h5 class="usr-name">Oscar Garner</h5>
-                                            <p class="msg-title">ACCOUNT UPDATE</p>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <div class="media">--}}
+{{--                                    <div class="user-img">--}}
+{{--                                        <div class="avatar avatar-xl">--}}
+{{--                                            <span class="avatar-title rounded-circle">OG</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="media-body">--}}
+{{--                                        <div class="">--}}
+{{--                                            <h5 class="usr-name">Oscar Garner</h5>--}}
+{{--                                            <p class="msg-title">ACCOUNT UPDATE</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </li>
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </li>--}}
 
             <livewire:notification-component></livewire:notification-component>
 
