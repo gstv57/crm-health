@@ -15,7 +15,7 @@ class ConsultaEditController extends Controller
     {
         return view('pacientes.consultas.edit', [
             'paciente' => $paciente,
-            'consulta' => $consulta->load('pagamentos', 'medico'),
+            'consulta' => $consulta->load('pagamentos', 'medico', 'pagamentos'),
             'medicos'  => Medico::with('especialidades')->get(),
         ]);
     }
