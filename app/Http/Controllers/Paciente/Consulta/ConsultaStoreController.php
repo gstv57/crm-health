@@ -9,13 +9,14 @@ use App\Http\Requests\Paciente\Consulta\ConsultaStoreRequest;
 use App\Models\{Consulta, Paciente};
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\{Carbon, Str};
+use Illuminate\Support\{Carbon, Facades\DB, Str};
 
 class ConsultaStoreController extends Controller
 {
     public function __invoke(Paciente $paciente, ConsultaStoreRequest $request)
     {
         $data = $request->validated();
+        DB::beginTransaction();
 
         try {
             $data['paciente_id']            = $paciente->id;
@@ -30,10 +31,11 @@ class ConsultaStoreController extends Controller
                 'valor'            => $data['valor'],
                 'status_pagamento' => $data['status_pagamento'],
             ]);
+            DB::commit();
 
             return to_route('consultas.index', $paciente->id)->with('success', 'Consulta cadastrada com sucesso!');
         } catch (Exception $error) {
-
+            DB::rollBack();
             Log::info($error->getMessage());
 
             return to_route('consultas.index', $paciente->id)->with('error', 'Algo de errado aconteceu, entre em contato com o suporte.');
