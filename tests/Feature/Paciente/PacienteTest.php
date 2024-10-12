@@ -85,7 +85,7 @@ test('create-new-paciente', function () {
         'primeiro_nome'   => $payload['primeiro_nome'],
         'sobrenome'       => $payload['sobrenome'],
         'telefone'        => $payload['telefone'],
-        'data_nascimento' => $payload['data_nascimento'],
+        'data_nascimento' => $payload['data_nascimento'] . ' 00:00:00',
         'sexo'            => $payload['sexo'],
         'cpf'             => $payload['cpf'],
         'rg'              => $payload['rg'],
