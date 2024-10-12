@@ -22,7 +22,7 @@ class ConsultaStoreController extends Controller
             $data['usuario_agendamento_id'] = auth()->user()->id;
             $data['data_e_hora']            = Carbon::createFromFormat('d/m/Y H:i', $data['data_e_hora']);
             $data['numero_consulta']        = Str::random(10);
-            $data['status_consulta']        = $data['status_pagamento'] == PagamentoStatusEnum::PAGO ? ConsultaStatusEnum::AGENDADA : ConsultaStatusEnum::PENDENTE;
+            $data['status_consulta']        = $data['status_pagamento'] === PagamentoStatusEnum::PAGO->value ? ConsultaStatusEnum::AGENDADA : ConsultaStatusEnum::PENDENTE;
             $consulta                       = Consulta::create($data);
 
             $consulta->pagamentos()->create([
