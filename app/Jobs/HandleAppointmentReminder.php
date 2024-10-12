@@ -15,7 +15,9 @@ class HandleAppointmentReminder implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public Consulta $consulta) {}
+    public function __construct(public Consulta $consulta)
+    {
+    }
 
     /**
      * Execute the job.

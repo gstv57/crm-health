@@ -465,6 +465,7 @@
             minDate: "today"
         });
 
+
         var f2 = flatpickr("#data_nascimento", {
             dateFormat: "Y-m-d",
             altInput: true,

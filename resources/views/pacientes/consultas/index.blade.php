@@ -99,7 +99,7 @@
                             <td class="text-center">
                                 <ul class="table-controls">
                                     <li>
-                                        <a href="" class="bs-tooltip"
+                                        <a href="{{ route('consultas.edit', ['paciente' => $paciente->id, 'consulta' => $consulta->id]) }}" class="bs-tooltip"
                                            data-toggle="tooltip"
                                            data-placement="top" title="Editar">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

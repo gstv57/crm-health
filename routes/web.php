@@ -7,7 +7,9 @@ use App\Http\Controllers\Medico\{MedicoCreateController,
     MedicoUpdateController};
 use App\Http\Controllers\Paciente\Consulta\ConsultaIndexController;
 use App\Http\Controllers\Paciente\{Consulta\ConsultaCreateController,
+    Consulta\ConsultaEditController,
     Consulta\ConsultaStoreController,
+    Consulta\ConsultaUpdateController,
     PacienteCreateController,
     PacienteEditController,
     PacienteIndexController,
@@ -72,6 +74,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/', ConsultaIndexController::class)->name('consultas.index');
             Route::get('/criar', ConsultaCreateController::class)->name('consultas.create');
             Route::post('/criar', ConsultaStoreController::class)->name('consultas.store');
+            Route::get('/editar/{consulta}', ConsultaEditController::class)->name('consultas.edit');
+            Route::patch('/editar/{consulta}', ConsultaUpdateController::class)->name('consultas.update');
         });
     });
 
