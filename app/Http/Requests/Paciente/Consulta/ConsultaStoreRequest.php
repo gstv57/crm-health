@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Paciente\Consulta;
 
 use App\Enum\Consulta\ConsultaTypeEnum;
-use Illuminate\Contracts\Validation\ValidationRule;
 use App\Enum\Pagamento\{PagamentoStatusEnum, PagamentoTypeEnum};
 use App\Models\Consulta;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;

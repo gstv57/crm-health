@@ -17,6 +17,7 @@ class ConsultaStoreController extends Controller
     {
         $data = $request->validated();
         DB::beginTransaction();
+
         try {
             $data['paciente_id']            = $paciente->id;
             $data['usuario_agendamento_id'] = auth()->user()->id;
@@ -31,6 +32,7 @@ class ConsultaStoreController extends Controller
                 'status_pagamento' => $data['status_pagamento'],
             ]);
             DB::commit();
+
             return to_route('consultas.index', $paciente->id)->with('success', 'Consulta cadastrada com sucesso!');
         } catch (Exception $error) {
             DB::rollBack();

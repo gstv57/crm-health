@@ -27,7 +27,7 @@ class ConsultaUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'medico_id'                => ['required', 'exists:medicos,id'],
+            'medico_id'   => ['required', 'exists:medicos,id'],
             'data_e_hora' => [
                 'required',
                 'date_format:d/m/Y H:i',
