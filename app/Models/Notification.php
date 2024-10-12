@@ -10,7 +10,7 @@ class Notification extends Model
     public $fillable = [
         'mensagem',
         'lida',
-        'user_id'
+        'user_id',
     ];
 
     public function user(): belongsTo
