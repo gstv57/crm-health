@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Medico;
 
+use App\Enum\User\GenderEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
@@ -32,7 +33,7 @@ class MedicoStoreRequest extends FormRequest
                 'before_or_equal:today',
                 'after_or_equal:' . Carbon::now()->subYears(120)->format('Y-m-d'),
             ],
-            'sexo'            => 'required|in:masculino,feminino,outro',
+            'sexo'            => ['required', Rule::in(GenderEnum::cases())],
             'crm'             => 'required|string|max:10|unique:medicos,crm',
             'especialidade'   => 'required|array|min:1',
             'especialidade.*' => 'exists:especialidades,id',

@@ -31,9 +31,9 @@
                             <label for="sexo">Sexo</label>
                             <select class="form-control" id="sexo" name="sexo" >
                                 <option value="">Selecione</option>
-                                <option value="masculino">Masculino</option>
-                                <option value="feminino">Feminino</option>
-                                <option value="outro">Outro</option>
+                                @foreach(\App\Enum\User\GenderEnum::cases() as $case)
+                                    <option value=""{{ $case->value }}>{{ $case->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
