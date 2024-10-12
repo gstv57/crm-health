@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Paciente;
 
+use App\Enum\User\GenderEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
 class PacienteStoreRequest extends FormRequest
 {
@@ -32,7 +34,7 @@ class PacienteStoreRequest extends FormRequest
                 'before_or_equal:today',
                 'after_or_equal:' . Carbon::now()->subYears(120)->format('Y-m-d'),
             ],
-            'sexo'        => 'required|in:Masculino,Feminino,Outro',
+            'sexo'        => ['required', Rule::in(GenderEnum::cases())],
             'cpf'         => 'required|cpf|unique:pacientes,cpf',
             'rg'          => 'nullable|string|max:20|unique:pacientes,rg',
             'endereco'    => 'required|string|max:255',

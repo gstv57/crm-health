@@ -22,7 +22,12 @@
                         </div>
                         <div class="col-md-6">
                             <label for="sexo">Sexo</label>
-                            <input type="text" class="form-control" id="sexo" name="sexo" placeholder="Sexo">
+                            <select class="form-control" id="sexo" name="sexo" >
+                                <option value="">Selecione</option>
+                                @foreach(\App\Enum\User\GenderEnum::cases() as $case)
+                                    <option value=""{{ $case->value }}>{{ $case->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
