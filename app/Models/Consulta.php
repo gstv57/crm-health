@@ -36,6 +36,7 @@ class Consulta extends Model
         'data_e_hora_inicio',
         'data_e_hora_fim',
         'duracao',
+        'reminded',
     ];
 
     protected $casts = [
