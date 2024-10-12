@@ -25,6 +25,7 @@ class HandleNotificationConfirmPayment implements ShouldQueue
      */
     public function handle(): void
     {
+        HandleStoreNotificationJob::dispatch('Pagamento recebido com sucesso!', $this->pagamento->consulta->paciente->user);
         Mail::to($this->pagamento->consulta->paciente->user->email)->send(new PaymentReceiveMail($this->pagamento));
     }
 }

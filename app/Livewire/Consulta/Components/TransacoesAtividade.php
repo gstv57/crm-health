@@ -27,6 +27,5 @@ class TransacoesAtividade extends Component
     public function handlePaymentReceive(): void
     {
         $this->dispatch('$refresh')->self();
-        $this->alert('success', 'Um novo pagamento acaba de ser recebido.');
     }
 }
