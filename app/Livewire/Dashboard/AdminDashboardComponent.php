@@ -5,7 +5,6 @@ namespace App\Livewire\Dashboard;
 use App\Models\Consulta;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use Livewire\Features\SupportRedirects\Redirector;
 
 class AdminDashboardComponent extends Component
 {
