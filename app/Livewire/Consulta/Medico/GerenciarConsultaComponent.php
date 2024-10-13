@@ -18,7 +18,7 @@ class GerenciarConsultaComponent extends Component
 
     public bool $mostrar_prontuario = false;
 
-    protected $listeners = ['updated-status-consulta' => '$refresh'];
+    protected $listeners = ['updated-status-consulta' => '$refresh', 'pesquisa-satisfacao-send' => '$refresh'];
     public function render(): View
     {
         return view('livewire.consulta.medico.consulta-show-component', [

@@ -39,6 +39,8 @@ return new class () extends Migration {
             $table->dateTime('data_e_hora_fim')->nullable();
             $table->integer('duracao')->nullable();
             $table->boolean('reminded')->default(false);
+            $table->integer('rating')->nullable();
+            $table->text('comment')->nullable();
 
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('set null');
             $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('set null');

@@ -28,6 +28,9 @@
                             </div>
                         </div>
                     @endif
+                    @if ($consulta->status_consulta == \App\Enum\Consulta\ConsultaStatusEnum::REALIZADA && empty($consulta->rating) && empty($consulta->comment))
+                        <livewire:consulta.components.pesquisa-de-satisfacao :consulta="$consulta"/>
+                    @endif
                 </div>
             </div>
         </div>
