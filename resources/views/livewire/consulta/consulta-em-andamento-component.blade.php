@@ -27,7 +27,7 @@
         <div class="widget-content">
             <div class="order-summary">
                 @forelse($consultas_em_andamento as $consulta_em_andamento)
-                    <div class="summary-list">
+                    <div class="summary-list transition duration-300 ease-in-out hover:opacity-50">
                         <div class="w-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -53,7 +53,9 @@
                         </div>
                     </div>
                 @empty
-                    sem consultas no momento sendo realizadas
+                    <div class="d-flex justify-content-center align-items-center text-uppercase">
+                        sem consultas no momento sendo realizadas
+                    </div>
                 @endforelse
             </div>
         </div>
