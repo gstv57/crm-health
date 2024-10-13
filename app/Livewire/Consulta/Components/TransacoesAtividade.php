@@ -23,9 +23,10 @@ class TransacoesAtividade extends Component
                 ->get(),
         ]);
     }
-    #[On('echo:payment-receive,PaymentReceive')]
+    #[On('echo:admin-updates,PaymentReceive')]
     public function handlePaymentReceive(): void
     {
+        $this->alert('success', 'Um novo pagamento acaba de ser recebido!');
         $this->dispatch('$refresh')->self();
     }
 }

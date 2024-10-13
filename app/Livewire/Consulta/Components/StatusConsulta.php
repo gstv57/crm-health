@@ -3,6 +3,7 @@
 namespace App\Livewire\Consulta\Components;
 
 use App\Enum\Consulta\ConsultaStatusEnum;
+use App\Events\{AppointmentFinished, AppointmentInProgress};
 use App\Livewire\Consulta\Medico\GerenciarConsultaComponent;
 use App\Models\{Consulta};
 use Exception;
@@ -56,6 +57,7 @@ class StatusConsulta extends Component
             $this->consulta->save();
             DB::commit();
             $this->alert('success', 'A consulta foi iniciada com sucesso!');
+            event(new AppointmentInProgress($this->consulta));
         } catch (Exception $error) {
             DB::rollBack();
             Log::info($error->getMessage());
@@ -72,6 +74,7 @@ class StatusConsulta extends Component
             $this->consulta->save();
             DB::commit();
             $this->alert('success', 'A consulta foi finalizada com sucesso!');
+            event(new AppointmentFinished($this->consulta));
         } catch (Exception $error) {
             DB::rollBack();
             Log::info($error->getMessage());
