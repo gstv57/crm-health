@@ -38,6 +38,8 @@ class Consulta extends Model
         'duracao',
         'reminded',
         'cancelada_em',
+        'rating',
+        'comment',
     ];
 
     protected $casts = [
