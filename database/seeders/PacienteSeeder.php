@@ -10,10 +10,9 @@ class PacienteSeeder extends Seeder
 {
     public function run(): void
     {
-
         Medico::factory(1)->create()->each(function (Medico $medico) {
             $medico->especialidades()->attach(rand(1, 15));
-            Paciente::factory(1)->create()->each(function ($paciente) use ($medico) {
+            Paciente::factory(5)->create()->each(function ($paciente) use ($medico) {
                 $consulta = Consulta::factory()->create([
                     'paciente_id'            => $paciente->id,
                     'medico_id'              => $medico->id,
