@@ -1,7 +1,5 @@
 <x-app-layout>
     <x-prontuario.partials.navbar-short :paciente="$paciente"></x-prontuario.partials.navbar-short>
-
-
     <div class="row">
         <div class="col-md-8">
             <div class="widget-content widget-content-area br-6 mt-2">
@@ -141,11 +139,8 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <button type="reset" class="btn btn-secondary">Voltar</button>
                                     @if($consulta->status_consulta != \App\Enum\Consulta\ConsultaStatusEnum::CANCELADA)
                                         <button type="submit" class="btn btn-primary">Salvar Consulta</button>
-                                        <a href="{{ route('consultas.cancelamento', ['paciente' => $paciente->id ,'consulta' => $consulta->id]) }}"
-                                           class="btn btn-danger">Cancelar Consulta</a>
                                     @endif
                                 </div>
                             </div>
@@ -199,6 +194,12 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="widget-content widget-content-area br-6 mt-2">
+                <button class="btn btn-success">Painel da consulta</button>
+                <a href="{{ route('consultas.cancelamento', ['paciente' => $paciente->id ,'consulta' => $consulta->id]) }}"
+                class="btn btn-danger">Cancelar Consulta</a>
+                <a href="{{ url()->previous() }}" class="btn btn-secondary">Voltar</a>
             </div>
         </div>
     </div>

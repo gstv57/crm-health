@@ -31,7 +31,6 @@ class ConsultaStoreRequest extends FormRequest
             'data_e_hora' => [
                 'required',
                 'date_format:d/m/Y H:i',
-                'after:now',
                 function ($attribute, $value, $fail) {
                     $dataEHora = Carbon::createFromFormat('d/m/Y H:i', $value);
 
