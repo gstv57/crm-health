@@ -8,14 +8,26 @@
                     <div class="row mb-4">
                         <div class="col-md-5">
                             <label for="medico_id">Médico</label>
-                            <select id="medico_id" name="medico_id" class="form-control">
+                            <select
+                                id="medico_id"
+                                name="medico_id"
+                                class="form-control"
+                                {{ auth()->user()->medico ? 'disabled' : '' }}
+                            >
                                 <option value="" disabled {{ old('medico_id') ? '' : 'selected' }}>Selecione o Médico</option>
                                 @foreach($medicos as $medico)
-                                    <option value="{{ $medico->id }}" {{ old('medico_id') == $medico->id ? 'selected' : '' }}>
+                                    <option
+                                        value="{{ $medico->id }}"
+                                        {{ old('medico_id') == $medico->id ? 'selected' : '' }}
+                                        {{ auth()->user()->medico && auth()->user()->medico->id == $medico->id ? 'selected' : '' }}
+                                    >
                                         {{ $medico->nome_completo }}
                                     </option>
                                 @endforeach
                             </select>
+                            @if(auth()->user()->medico)
+                                <input type="hidden" name="medico_id" value="{{ auth()->user()->medico->id }}">
+                            @endif
                         </div>
                         <div class="col-md-3">
                             <label for="data_e_hora">Data e Hora da Consulta</label>
