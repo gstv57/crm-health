@@ -15,8 +15,9 @@ return new class () extends Migration {
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->integer('posicao');
-            $table->index('paciente_id');
-            $table->unique(['paciente_id', 'posicao']);
+            $table->integer('prioridade');
+            $table->index(['paciente_id', 'posicao']);
+            $table->unique('paciente_id', 'posicao');
             $table->timestamps();
         });
     }

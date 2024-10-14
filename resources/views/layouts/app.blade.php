@@ -376,6 +376,10 @@
             yearRange: [1900, new Date().getFullYear()],
         });
 
+        var select_add_to_queue = $(".basic").select2({
+            tags: true,
+        });
+
 
     });
 </script>

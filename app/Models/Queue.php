@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Queue extends Model
 {
-    protected $fillable = ['paciente_id', 'posicao'];
+    protected $fillable = ['paciente_id', 'posicao', 'prioridade'];
 
     public function paciente(): belongsTo
     {

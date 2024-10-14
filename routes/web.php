@@ -30,6 +30,7 @@ use App\Http\Controllers\Webhook\HandleReceive;
 use App\Livewire\Consulta\Medico\GerenciarConsultaComponent;
 use App\Livewire\Dashboard\AdminDashboardComponent;
 use App\Livewire\Paciente\Consulta\CancelamentoComponent;
+use App\Livewire\Queue\{AddToQueue, QueueComponent};
 use App\Livewire\Transacoes\TransacoesComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -103,6 +104,11 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('transacoes')->group(function () {
         Route::get('/', TransacoesComponent::class)->name('transacoes.index');
+    });
+
+    Route::prefix('fila')->group(function () {
+        Route::get('/', QueueComponent::class)->name('fila.index');
+        Route::get('/adicionar', AddToQueue::class)->name('fila.adicionar');
     });
 });
 
